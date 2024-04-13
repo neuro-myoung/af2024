@@ -1,0 +1,19 @@
+.revealText {
+    font-size: 3rem;
+    max-width: 75%;
+    display: flex;
+    flex-wrap: wrap;
+    line-height: 1;
+    position: relative;
+}
+
+
+.word {
+    margin: 6px;
+    position: relative;
+}
+
+.shadow {
+    position: absolute;
+    opacity: 0.1;
+}

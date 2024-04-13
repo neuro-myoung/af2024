@@ -1,0 +1,63 @@
+.entry {
+    display: flex;
+    margin-top: 10px;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+    border-radius: 15px 15px 0 0;
+}
+
+.tagtext {
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.entryOuter {
+    width: 100%;
+    border-radius: 15px;
+    max-width: 600px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.entryOuter::after {
+    background:rgba(0,0,0,0.05);
+}
+
+.openEntry {
+    position: relative;
+    transition: all 0.2s ease-in-out;
+    display: flex;
+    gap: 2rem;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 10px;
+    background-image: linear-gradient(0.9turn, rgba(239, 239, 240, 0.2), rgba(255, 255, 255, 1), rgba(239, 239, 240, 0.2), rgba(239, 239, 240, 0.2), rgba(239, 239, 240, 0.2));
+    background-size: 300% 100%;
+    border-radius: 0 0 15px 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    transition: all 0.5s ease-in-out;
+}
+
+.openEntry:hover,
+.openEntry:focus {
+    background-position: 100% 0;
+}
+
+.entry:hover,
+.entry:focus {
+   background:rgba(229, 229, 230, 1)
+}
+
+.desc {
+    font-size: 1.2rem;
+}
+
+.img {
+    border-radius: 5px;
+}
+
