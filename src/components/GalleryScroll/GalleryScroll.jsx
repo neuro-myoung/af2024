@@ -1,11 +1,9 @@
 'use client';
 import { useEffect, useRef } from 'react';
-import styles from './galleryscroll.module.css'
 import Image from 'next/image';
 import useDimension from '@/app/useDimension';
 import {useTransform, useScroll, motion } from 'framer-motion';
 import Lenis from '@studio-freight/lenis';
-import TextReveal from '@/components/TextReveal/TextReveal'
 
 const images = [
     "AlixFuerst_Macaws.jpg",
@@ -25,10 +23,6 @@ const images = [
     "westie.jpg",
     "wedding.jpg"
 ]
-
-const txt = "I am especially drawn to nature, and strive to capture the tiny details and unique character of every subject I draw."
-
-
 
 export default function GalleryScroll() {
 
@@ -55,37 +49,32 @@ export default function GalleryScroll() {
     }, [])
 
     return (
-        <main className={styles.main}>
-          <div className={styles.statement}>
-            <TextReveal value={txt}/>
-          </div>
-        <div className={styles.spacer}></div>
-        <div ref={container} className={styles.scrollGallery}>
-            <div className={styles.galleryWrapper}>
+        <section className="w-screen relative h-full flex flex-col items-center justify-center max-h-1080 relative before:content-[''] before:absolute before:bg-color-[#0e0008] before:h-full before:w-screen">
+        <div ref={container} className="w-full">
+            <div className="h-[175vh] flex justify-center relative gap-4 p-[1vw] overflow-hidden box-border [&>*:nth-of-type(1)]:top-[-30%] [&>*:nth-of-type(2)]:top-[-70%] [&>*:nth-of-type(3)]:top-[-30%] [&>*:nth-of-type(4)]:top-[-60%]">
             <Column images={[images[0], images[1], images[2], images[3]]} y={y}/>
             <Column images={[images[4], images[5], images[6], , images[7]]} y={y2}/>
             <Column images={[images[8], images[9], images[10], images[11]]} y={y3}/>
             <Column images={[images[12], images[13], images[14], images[15]]} y={y4}/>
             </div>
         </div>
-        <div className={styles.spacer}></div>
-        </main>
+        </section>
     ) 
 }
 
 
 const Column = ({images, y=0}) => {
   return (
-    <motion.div style={{y}} className={styles.column}>
+    <motion.div style={{y}} className="w-[25%] h-full flex flex-col relative gap-4 max-w-[400px]">
       {
         images.map( (src, i) => {
           return (
-          <div key={i} className={styles.imgWrapper}>
+          <div key={i} className="w-full h-full relative overflow-hidden rounded-3xl">
             <Image 
-              src={`/static/images/galleryScroll/${src}`}
+              src={`/galleryScroll/${src}`}
               alt='image'
               className='img'
-              fill
+              fill = {true}
               style={{objectFit:"cover"}}
               sizes="(max-width: 768px) 100px, (max-width: 1200px) 200px, 300px"
             />

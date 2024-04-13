@@ -1,7 +1,5 @@
 'use client'
-
 import React, { useEffect, useRef } from "react"
-import styles from './bokeh.module.css'
 
 function updateBokehPaths(bokehRefs) {
     const dirArr = [-1, 1]
@@ -9,7 +7,7 @@ function updateBokehPaths(bokehRefs) {
     for (let i = 0; i < bokehRefs.current.length; i++) {
       let diam = Math.floor(Math.random() * (200 - 15) + 15)
       let yOffset = Math.round(Math.random() * 1600)
-      let xOffset = Math.round(Math.random() * 2000)
+      let xOffset = Math.round(Math.random() * 3000)
       let orbitDiam = Math.round(Math.random() * (500 - 50) + 50)
       let dir = dirArr[Math.floor(Math.random() * dirArr.length)]
       let col = bokehColors[Math.floor(Math.random() * bokehColors.length)]
@@ -44,11 +42,11 @@ const Bokeh = () => {
   }, []);
 
   return (
-    <div className={styles.bokehWrapper}>
+    <div className="absolute h-screen w-screen">
       {[...Array(50)].map((value, index) => (
         <div
           key={index}
-          className={styles.bokeh}
+          className="rounded-[50%] opacity-10 absolute z-5 blur-sm t-[50%] l-[50%]"
           ref={element => {
             bokehRefs.current[index] = element
           }}

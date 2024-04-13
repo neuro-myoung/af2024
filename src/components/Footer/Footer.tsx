@@ -1,10 +1,9 @@
-import styles from './footer.module.css'
 
 const Footer = () => {
   return (
-    <div className={styles.footerWrapper}>
-        <div className={styles.footerContainer}>
-          <div className={styles.upperFooter}>
+    <div className="py-10 w-screen bg-[#0e0008] text-[#f2f2f2] flex justify-center align-center">
+        <div className="w-full max-w-[1600px] flex flex-col items-center">
+          <div>
             <div>
               <p>Locally serving the greater Boston area</p>
               <p>Alix Fuerst</p>

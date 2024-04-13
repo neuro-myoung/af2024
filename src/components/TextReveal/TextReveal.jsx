@@ -1,6 +1,5 @@
 'use client';
 import React, { useRef, ReactNode } from 'react';
-import styles from './textreveal.module.css';
 import { useScroll, useTransform, motion } from 'framer-motion';
 
 const TextReveal = ({value}) => {
@@ -14,8 +13,8 @@ const TextReveal = ({value}) => {
     const words = value.split(" ");
 
     return(
-        <p 
-            className={styles.revealText}
+        <h1 
+            className="max-w-[1200px] flex flex-wrap relative leading-8 text-[#0e0008]"
             ref = {element}
         >
             {
@@ -25,7 +24,7 @@ const TextReveal = ({value}) => {
                     return <Word key = {i} range={[start, end]} progress={scrollYProgress}>{ word }</Word>
                 })
             }
-        </p>
+        </h1>
     )
 }
 
@@ -34,7 +33,7 @@ const Word = ({children, range, progress}) => {
     const extent = range[1] - range[0];
     const step = extent/children.length;
     return (
-        <span className={styles.word}>
+        <span className="m-4 relative">
             {
                 chars.map( (character, i) => {
                     const start = range[0] + (step * i)
@@ -54,7 +53,7 @@ const Character = ({children, range, progress}) => {
     const opacity = useTransform(progress, range, [0,1])
     return (
         <span>
-            <span className={styles.shadow}>{children}</span>
+            <span className="absolute opacity-10">{children}</span>
         <motion.span style={{opacity}}>
             {children}
         </motion.span>

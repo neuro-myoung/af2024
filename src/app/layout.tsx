@@ -20,9 +20,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={alegreya.className}>
         <Navbar />
-        
         {children}
-        
+        <Footer />
       </body>
     </html>
   );

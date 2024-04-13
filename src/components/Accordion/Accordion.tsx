@@ -2,7 +2,7 @@
 
 'use client';
 import { useState } from 'react'
-import AccordionEntry from '../AccordionEntry/AccordionEntry'
+import AccordionEntry from './AccordionEntry/AccordionEntry'
 import styles from './accordion.module.css'
 
 
