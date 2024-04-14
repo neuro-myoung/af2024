@@ -1,15 +1,18 @@
 'use client'
-import { Tab } from '@headlessui/react'
-import Masonry from 'react-masonry-css'
-import Image from 'next/image'
-import LightGallery from 'lightgallery/react'
+import { Tab } from '@headlessui/react';
+import Masonry from 'react-masonry-css';
+import Image from 'next/image';
 
-import 'lightgallery/css/lightgallery.css'
-import 'lightgallery/css/lg-zoom.css'
-import 'lightgallery/css/lg-thumbnail.css'
+import type { LightGallery } from 'lightgallery/lightgallery';
+import LightGalleryComponent from 'lightgallery/react';
+import { useRef } from 'react';
 
-import lgThumbnail from 'lightgallery/plugins/thumbnail'
-import lgZoom from 'lightgallery/plugins/zoom'
+import 'lightgallery/css/lightgallery.css';
+import 'lightgallery/css/lg-zoom.css';
+import 'lightgallery/css/lg-thumbnail.css';
+
+import lgThumbnail from 'lightgallery/plugins/thumbnail';
+import lgZoom from 'lightgallery/plugins/zoom';
 
 const tabs = [
     {
@@ -41,6 +44,7 @@ import img7 from "../../../public/galleryScroll/wedding.jpg";
 const images = [img1, img2, img3, img4, img5, img6, img7]
 
 export default function Galleries() {
+    const lightboxRef = useRef<LightGallery | null>(null)
     return (
         <div className="h-full w-screen min-h-screen overflow-auto pt-[4rem]">
             <main className="py-32 bg-[#f2f2f2]">
@@ -61,29 +65,36 @@ export default function Galleries() {
                             <Tab.Panels className="h-full w-full">
                                 <Tab.Panel className="p-2 sm:p-6">
                                     <Masonry breakpointCols={3} className="flex items-start justify-center gap-5" columnClassName="">
-                                        {images.map(image => (<Image
-                                            key={image.src}
+                                        {images.map((image, idx) => (<Image
+                                            key={idx}
                                             src={image}
                                             alt="test"
-                                            className="group-hover:scale-105 transition ease-in-out duration-300 my-5 pointer"
+                                            className="hover:opacity-70 transition ease-in-out duration-300 my-5 cursor-pointer"
                                             placeholder="blur"
+                                            onClick={() => {
+                                                lightboxRef.current?.openGallery(idx);
+                                            }}
                                         />
                                         ))}
                                     </Masonry>
 
-                                    <LightGallery
-                                        onInit={onInit}
+                                    <LightGalleryComponent
+                                        onInit={(ref) => {
+                                            if (ref) {
+                                                lightboxRef.current = ref.instance
+                                            }
+                                        }}
                                         speed={500}
                                         plugins={[lgThumbnail, lgZoom]}
+                                        dynamic
+                                        dynamicEl={images.map(image => ({
+                                            src: image.src,
+                                            thumb: image.src,
+                                        })
+                                    )}
                                     >
-                                        <a href="img/img1.jpg">
-                                            <img alt="img1" src="img/thumb1.jpg" />
-                                        </a>
-                                        <a href="img/img2.jpg">
-                                            <img alt="img2" src="img/thumb2.jpg" />
-                                        </a>
 
-                                    </LightGallery>
+                                    </LightGalleryComponent>
                                 </Tab.Panel>
                                 <Tab.Panel>Content 2</Tab.Panel>
                                 <Tab.Panel>Content 3</Tab.Panel>
