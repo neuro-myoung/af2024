@@ -49,7 +49,6 @@ export default function GallerySection(data: any) {
     );
 }
 
-
 function Gallery({ photos }: any) {
     const lightboxRef = useRef<LightGallery | null>(null)
 
