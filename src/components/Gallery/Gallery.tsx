@@ -39,7 +39,7 @@ interface CloudinaryData {
     secure_url: string,
 }
 
-export default function Gallery(data:object) {
+export default function Gallery(data:any) {
     const lightboxRef = useRef<LightGallery | null>(null)
     const wildlife = data.data.resources.filter(function (el) {
         return el.folder == "wildlife";
@@ -53,6 +53,8 @@ export default function Gallery(data:object) {
     const people = data.data.resources.filter(function (el) {
         return el.folder == "people";
     })
+
+    console.log(dogs)
 
     return (
         <div className="h-full w-screen min-h-screen overflow-auto pt-[4rem]">
