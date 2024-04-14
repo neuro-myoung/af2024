@@ -1,7 +1,6 @@
 'use client'
 import { Tab } from '@headlessui/react';
 import Masonry from 'react-masonry-css';
-import Image from 'next/image';
 import CloudImage from '@/components/CloudinaryImage/CloudImage'
 
 import type { LightGallery } from 'lightgallery/lightgallery';
@@ -35,16 +34,16 @@ const tabs = [
 ]
 
 export default function GallerySection(data: any) {
-    const wildlife = data.data.resources.filter(function (el) {
+    const wildlife = data.data.resources.filter(function (el:any) {
         return el.folder == "wildlife";
     })
-    const dogs = data.data.resources.filter(function (el) {
+    const dogs = data.data.resources.filter(function (el:any) {
         return el.folder == "dogs";
     })
-    const cats = data.data.resources.filter(function (el) {
+    const cats = data.data.resources.filter(function (el:any) {
         return el.folder == "cats";
     })
-    const people = data.data.resources.filter(function (el) {
+    const people = data.data.resources.filter(function (el:any) {
         return el.folder == "people";
     })
 
@@ -122,7 +121,7 @@ function Gallery({ photos }: any) {
                 speed={500}
                 plugins={[lgThumbnail, lgZoom]}
                 dynamic
-                dynamicEl={photos.map(image => ({
+                dynamicEl={photos.map( (image:any) => ({
                     src: image.secure_url,
                     thumb: image.secure_url,
                 })
