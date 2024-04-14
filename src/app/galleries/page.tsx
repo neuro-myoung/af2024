@@ -22,24 +22,15 @@ const tabs = [
     },
 ]
 
-const images = [
-    "AlixFuerst_Macaws.jpg",
-    "AlixFuerst_LexiandLily.jpg",
-    "AlixFuerst_Rabbit.jpg",
-    "bee.jpg",
-    "Cocoafinal.jpeg",
-    "Blue_Heron.jpg",
-    "Ev.jpeg",
-    "husky.jpg",
-    "WarblerScan.jpg",
-    "lion.jpeg",
-    "Mouse.jpeg",
-    "Owl3.jpeg",
-    "RoosterPrint.tif-001.png",
-    "Tortoise.jpg",
-    "westie.jpg",
-    "wedding.jpg"
-]
+import img1 from "../../../public/galleryScroll/AlixFuerst_Macaws.jpg";
+import img2 from "../../../public/galleryScroll/AlixFuerst_LexiandLily.jpg";
+import img3 from "../../../public/galleryScroll/Ev.jpeg";
+import img4 from "../../../public/galleryScroll/bee.jpg";
+import img5 from "../../../public/galleryScroll/Owl3.jpeg";
+import img6 from "../../../public/galleryScroll/lion.jpeg";
+import img7 from "../../../public/galleryScroll/wedding.jpg";
+
+const images = [img1, img2, img3, img4, img5, img6, img7]
 
 export default function Galleries() {
     return (
@@ -61,15 +52,14 @@ export default function Galleries() {
                         <div className="relative h-full max-w-[1600px] w-full before:content-[''] before:absolute before:w-[100%] before:h-[20px] before:l-0 before:t-0 before:border-l-2 before:border-r-2 before:border-t-2 before:border-[#0e0008] after:content-[''] after:absolute after:w-[100%] after:h-[20px] after:r-0 after:b-100 after:border-l-2 after:border-r-2 after:border-b-2 after:border-[#0e0008]">
                             <Tab.Panels className="h-full w-full">
                                 <Tab.Panel className="p-2 sm:p-6">
-                                    <Masonry breakpointCols={4} className="flex items-center justify-center gap-5" columnClassName="">
-                                        {images.map((img, idx) => (
-                                            <div key={idx} className=" my-5 group overflow-hidden cursor-pointer rounded-md">
-                                                <img
-                                                    src={`/galleryScroll/${img}`}
-                                                    alt="test"
-                                                    className="group-hover:scale-105 transition ease-in-out duration-300"
-                                                />
-                                            </div>
+                                    <Masonry breakpointCols={3} className="flex items-start justify-center gap-5" columnClassName="">
+                                        {images.map(image => (<Image
+                                            key={image.src}
+                                            src={image}
+                                            alt="test"
+                                            className="group-hover:scale-105 transition ease-in-out duration-300 my-5 pointer"
+                                            placeholder="blur"
+                                        />
                                         ))}
                                     </Masonry>
                                 </Tab.Panel>
