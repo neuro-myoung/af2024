@@ -34,13 +34,7 @@ const tabs = [
     },
 ]
 
-interface CloudinaryData {
-    public_id: string,
-    secure_url: string,
-}
-
-export default function Gallery(data:any) {
-    const lightboxRef = useRef<LightGallery | null>(null)
+export default function GallerySection(data: any) {
     const wildlife = data.data.resources.filter(function (el) {
         return el.folder == "wildlife";
     })
@@ -75,43 +69,17 @@ export default function Gallery(data:any) {
                         <div className="relative h-full max-w-[1600px] w-full before:content-[''] before:absolute before:w-[100%] before:h-[20px] before:l-0 before:t-0 before:border-l-2 before:border-r-2 before:border-t-2 before:border-[#0e0008] after:content-[''] after:absolute after:w-[100%] after:h-[20px] after:r-0 after:b-100 after:border-l-2 after:border-r-2 after:border-b-2 after:border-[#0e0008]">
                             <Tab.Panels className="h-full w-full">
                                 <Tab.Panel className="p-2 sm:p-6">
-                                    <Masonry breakpointCols={4} className="flex items-start justify-around " columnClassName="">
-                                        {data.data.resources.map((image:any, idx:number) => (
-                                        <CloudImage
-                                            key={idx}
-                                            src={image.secure_url}
-                                            alt={image.alt}
-                                            width="300"
-                                            height="300"
-                                            className="hover:opacity-70 rounded-lg transition ease-in-out duration-300 my-6 cursor-pointer"
-                                            onClick={() => {
-                                                lightboxRef.current?.openGallery(idx);
-                                            }}
-                                        />
-                                        ))}
-                                    </Masonry>
-
-                                    <LightGalleryComponent
-                                        onInit={(ref) => {
-                                            if (ref) {
-                                                lightboxRef.current = ref.instance
-                                            }
-                                        }}
-                                        speed={500}
-                                        plugins={[lgThumbnail, lgZoom]}
-                                        dynamic
-                                        dynamicEl={data.data.resources.map(image => ({
-                                            src: image.secure_url,
-                                            thumb: image.secure_url,
-                                        })
-                                    )}
-                                    >
-
-                                    </LightGalleryComponent>
+                                    <Gallery photos = {wildlife} />
                                 </Tab.Panel>
-                                <Tab.Panel>Content 2</Tab.Panel>
-                                <Tab.Panel>Content 3</Tab.Panel>
-                                <Tab.Panel>Content 4</Tab.Panel>
+                                <Tab.Panel className="p-2 sm:p-6">
+                                    <Gallery photos = {dogs} />
+                                </Tab.Panel>
+                                <Tab.Panel className="p-2 sm:p-6">
+                                    <Gallery photos = {cats}/>
+                                </Tab.Panel>
+                                <Tab.Panel className="p-2 sm:p-6">
+                                    <Gallery photos = {people}/>
+                                </Tab.Panel>
                             </Tab.Panels>
                         </div>
                     </Tab.Group>
@@ -120,4 +88,47 @@ export default function Gallery(data:any) {
             </main>
         </div>
     );
+}
+
+
+function Gallery({ photos }: any) {
+    const lightboxRef = useRef<LightGallery | null>(null)
+    return (
+        <>
+            <Masonry breakpointCols={4} className="flex items-start justify-center gap-5" columnClassName="">
+                {photos.map((image: any, idx: number) => (
+                    <CloudImage
+                        key={idx}
+                        src={image.secure_url}
+                        alt={image.alt}
+                        width="400"
+                        height="400"
+                        sizes="(min-width: 480px ) 50vw, (min-width: 728px 33vw), (min-width: 976px ) 25vw, 100vw"
+                        loading="lazy"
+                        className="hover:opacity-70 rounded-lg transition ease-in-out duration-300 my-5 cursor-pointer"
+                        onClick={() => {
+                            lightboxRef.current?.openGallery(idx);
+                        }}
+                    />
+                ))}
+            </Masonry>
+
+            <LightGalleryComponent
+                onInit={(ref) => {
+                    if (ref) {
+                        lightboxRef.current = ref.instance
+                    }
+                }}
+                speed={500}
+                plugins={[lgThumbnail, lgZoom]}
+                dynamic
+                dynamicEl={photos.map(image => ({
+                    src: image.secure_url,
+                    thumb: image.secure_url,
+                })
+                )}
+            />
+        </>
+    )
+
 }

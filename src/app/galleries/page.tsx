@@ -8,7 +8,10 @@ cloudinary.config({
 });
 
 export default async function GalleryPage() {
-    const data:object = (await cloudinary.search.expression('resource_type:image').execute())
+    const data = (await cloudinary.search.expression('resource_type:image').execute())
+    console.log(data.resources.secure_url)
+    
+    
     return(
         <Gallery data = {data} />
     )
