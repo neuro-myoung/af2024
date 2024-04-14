@@ -21,7 +21,8 @@
     "react-collapse": "^5.1.1",
     "react-dom": "^18",
     "react-icons": "^5.0.1",
-    "react-masonry-css": "^1.0.16"
+    "react-masonry-css": "^1.0.16",
+    "sanity": "^3.37.2"
   },
   "devDependencies": {
     "@types/node": "^20",

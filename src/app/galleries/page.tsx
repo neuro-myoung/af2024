@@ -2,6 +2,11 @@
 import { Tab } from '@headlessui/react'
 import Masonry from 'react-masonry-css'
 import Image from 'next/image'
+import LightGallery from 'lightgallery/react'
+
+import 'lightgallery/css/lightgallery.css'
+import 'lightgallery/css/lg-zoom.css'
+import 'lightgallery/css/lg-thumbnail.css'
 
 const tabs = [
     {
