@@ -14,40 +14,7 @@ import 'lightgallery/css/lg-thumbnail.css';
 import lgThumbnail from 'lightgallery/plugins/thumbnail';
 import lgZoom from 'lightgallery/plugins/zoom';
 
-const tabs = [
-    {
-        key: 'wildlife',
-        display: 'Wildlife'
-    },
-    {
-        key: 'dogs',
-        display: 'Dogs'
-    },
-    {
-        key: 'cats',
-        display: 'Cats'
-    },
-    {
-        key: 'people',
-        display: 'People'
-    },
-]
-
 export default function GallerySection(data: any) {
-    const wildlife = data.data.resources.filter(function (el:any) {
-        return el.folder == "wildlife";
-    })
-    const dogs = data.data.resources.filter(function (el:any) {
-        return el.folder == "dogs";
-    })
-    const cats = data.data.resources.filter(function (el:any) {
-        return el.folder == "cats";
-    })
-    const people = data.data.resources.filter(function (el:any) {
-        return el.folder == "people";
-    })
-
-    console.log(dogs)
 
     return (
         <div className="h-full w-screen min-h-screen overflow-auto pt-[4rem]">
@@ -55,7 +22,7 @@ export default function GallerySection(data: any) {
                 <div className="flex flex-col items-center px-10">
                     <Tab.Group>
                         <Tab.List className="flex items-center gap-16 my-10">
-                            {tabs.map(tab => (
+                            {data.data.map(tab => (
                                 <Tab key={tab.key} className="p-2 text-5xl">
                                     {({ selected }) => (
                                         <span className={selected ? "text-white" : "text-stone-600"}>
@@ -67,18 +34,11 @@ export default function GallerySection(data: any) {
                         </Tab.List>
                         <div className="relative h-full max-w-[1600px] w-full before:content-[''] before:absolute before:w-[100%] before:h-[20px] before:l-0 before:t-0 before:border-l-2 before:border-r-2 before:border-t-2 before:border-[#0e0008] after:content-[''] after:absolute after:w-[100%] after:h-[20px] after:r-0 after:b-100 after:border-l-2 after:border-r-2 after:border-b-2 after:border-[#0e0008]">
                             <Tab.Panels className="h-full w-full">
-                                <Tab.Panel className="p-2 sm:p-6">
-                                    <Gallery photos = {wildlife} />
+                            {data.data.map(tab => (
+                                <Tab.Panel key={tab.key} className="p-2 sm:p-6">
+                                    <Gallery key={tab.key} photos={tab.images} />
                                 </Tab.Panel>
-                                <Tab.Panel className="p-2 sm:p-6">
-                                    <Gallery photos = {dogs} />
-                                </Tab.Panel>
-                                <Tab.Panel className="p-2 sm:p-6">
-                                    <Gallery photos = {cats}/>
-                                </Tab.Panel>
-                                <Tab.Panel className="p-2 sm:p-6">
-                                    <Gallery photos = {people}/>
-                                </Tab.Panel>
+                            ))}
                             </Tab.Panels>
                         </div>
                     </Tab.Group>
@@ -92,6 +52,7 @@ export default function GallerySection(data: any) {
 
 function Gallery({ photos }: any) {
     const lightboxRef = useRef<LightGallery | null>(null)
+
     return (
         <>
             <Masonry breakpointCols={4} className="flex items-start justify-center gap-5" columnClassName="">
@@ -121,9 +82,9 @@ function Gallery({ photos }: any) {
                 speed={500}
                 plugins={[lgThumbnail, lgZoom]}
                 dynamic
-                dynamicEl={photos.map( (image:any) => ({
-                    src: image.secure_url,
-                    thumb: image.secure_url,
+                dynamicEl={photos.map((image: any) => ({
+                    src: image.secure_url.slice(0, 54) + "f_auto/q_auto:best/" + image.secure_url.slice(54),
+                    thumb: image.secure_url.slice(0, 54) + "c_scale,w_100/f_auto/q_auto/" + image.secure_url.slice(54)
                 })
                 )}
             />

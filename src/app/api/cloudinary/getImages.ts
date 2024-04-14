@@ -1,5 +1,4 @@
 import { cloudinary } from '../../../cloudinary.config'
-import GallerySection from "@/components/Gallery/Gallery"
 
 interface CloudinaryResource {
     public_id: string;
@@ -8,7 +7,7 @@ interface CloudinaryResource {
     alt: string;
 } 
 
-export default async function GalleryPage() {    
+export async function getImages() {
     const { resources } = await cloudinary.search.expression('resource_type:image').execute()
 
     const wildlife = resources.filter(function (el:CloudinaryResource) {
@@ -23,32 +22,12 @@ export default async function GalleryPage() {
     const people = resources.filter(function (el:CloudinaryResource) {
         return el.folder == "people";
     })
-
-    const tabs = [
-        {
-            key: 'wildlife',
-            display: 'Wildlife',
-            images: wildlife,
-        },
-        {
-            key: 'dogs',
-            display: 'Dogs',
-            images: dogs,
-        },
-        {
-            key: 'cats',
-            display: 'Cats',
-            images: cats,
-        },
-        {
-            key: 'people',
-            display: 'People',
-            images: people,
-        },
-    ]
-
-    return (
-        <GallerySection data={tabs} />
-    );
-
+    return{
+        props: {
+            wildife: wildlife,
+            dogs: dogs,
+            cats: cats,
+            people: people,
+        }
+    }
 }
