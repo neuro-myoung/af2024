@@ -70,6 +70,20 @@ export default function Galleries() {
                                         />
                                         ))}
                                     </Masonry>
+
+                                    <LightGallery
+                                        onInit={onInit}
+                                        speed={500}
+                                        plugins={[lgThumbnail, lgZoom]}
+                                    >
+                                        <a href="img/img1.jpg">
+                                            <img alt="img1" src="img/thumb1.jpg" />
+                                        </a>
+                                        <a href="img/img2.jpg">
+                                            <img alt="img2" src="img/thumb2.jpg" />
+                                        </a>
+
+                                    </LightGallery>
                                 </Tab.Panel>
                                 <Tab.Panel>Content 2</Tab.Panel>
                                 <Tab.Panel>Content 3</Tab.Panel>
