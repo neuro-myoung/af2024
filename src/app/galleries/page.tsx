@@ -1,4 +1,4 @@
-import { cloudinary } from '../../../cloudinary.config'
+import { cloudinary } from '../lib/cloudinary.config'
 import GallerySection from "@/components/Gallery/Gallery"
 
 interface CloudinaryResource {
