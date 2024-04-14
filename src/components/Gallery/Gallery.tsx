@@ -22,7 +22,7 @@ export default function GallerySection(data: any) {
                 <div className="flex flex-col items-center px-10">
                     <Tab.Group>
                         <Tab.List className="flex items-center gap-16 my-10">
-                            {data.data.map(tab => (
+                            {data.data.map((tab:any) => (
                                 <Tab key={tab.key} className="p-2 text-5xl">
                                     {({ selected }) => (
                                         <span className={selected ? "text-white" : "text-stone-600"}>
@@ -34,7 +34,7 @@ export default function GallerySection(data: any) {
                         </Tab.List>
                         <div className="relative h-full max-w-[1600px] w-full before:content-[''] before:absolute before:w-[100%] before:h-[20px] before:l-0 before:t-0 before:border-l-2 before:border-r-2 before:border-t-2 before:border-[#0e0008] after:content-[''] after:absolute after:w-[100%] after:h-[20px] after:r-0 after:b-100 after:border-l-2 after:border-r-2 after:border-b-2 after:border-[#0e0008]">
                             <Tab.Panels className="h-full w-full">
-                            {data.data.map(tab => (
+                            {data.data.map((tab:any) => (
                                 <Tab.Panel key={tab.key} className="p-2 sm:p-6">
                                     <Gallery key={tab.key} photos={tab.images} />
                                 </Tab.Panel>
