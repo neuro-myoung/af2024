@@ -1,10 +1,6 @@
-
-
 'use client';
 import { useState } from 'react'
 import AccordionEntry from './AccordionEntry/AccordionEntry'
-import styles from './accordion.module.css'
-
 
 const Accordion = () => {
 
@@ -43,8 +39,8 @@ const Accordion = () => {
 
     const [open, setOpen] = useState(-1);
 
-    const toggle = (index:number) => {
-        if(open == index) {
+    const toggle = (index: number) => {
+        if (open == index) {
             return setOpen(-1)
         }
 
@@ -52,26 +48,24 @@ const Accordion = () => {
     }
 
 
-    return(
-        <main>
-            <section className={styles.accordion}>
-                <h1 className={styles.sectionTitle}>Shop for Art</h1>
-                {entries.map((entry, index) => {
-                    return (
-                        <AccordionEntry 
-                            key={index} 
-                            open={index === open} 
-                            title={entry.item} 
-                            desc={entry.description} 
-                            toggle={() => toggle(index)}
-                            imgsrc={entry.imgsrc}
-                            alt={entry.alt}
-                        />
-                    )
-                })}
-            
-            </section>
-        </main>
+    return (
+        <section className="text-[#0e0008] grid grid-cols-1 justify-items-start items-center w-full pr-[20px]">
+            <h1 className="pb-[3rem]">Shop for Art</h1>
+            {entries.map((entry, index) => {
+                return (
+                    <AccordionEntry
+                        key={index}
+                        open={index === open}
+                        title={entry.item}
+                        desc={entry.description}
+                        toggle={() => toggle(index)}
+                        imgsrc={entry.imgsrc}
+                        alt={entry.alt}
+                    />
+                )
+            })}
+
+        </section>
     )
 }
 
