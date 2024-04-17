@@ -8,7 +8,7 @@ export default function ArtistStatement() {
 
     return (
 
-        <section className="w-screen relative flex justify-center items-center min-h-screen before:content-[''] before:absolute before:bg-slate-200 before:h-full before:w-screen">
+        <section className="w-screen relative flex justify-center items-center min-h-screen before:content-[''] before:absolute before:bg-[#f2f2f2] before:h-full before:w-screen">
             <div className="max-w-[1600px]">
                 <TextReveal value={txt} />
             </div>

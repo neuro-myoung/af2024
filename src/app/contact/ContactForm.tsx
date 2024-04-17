@@ -1,5 +1,4 @@
 'use client';
-import styles from './contact.module.css';
 
 export default function ContactForm() {
 
@@ -39,28 +38,28 @@ export default function ContactForm() {
     }
   
     return (
-        <form className={styles.formBox} onSubmit={handleSubmit}>
-            <div className={styles.formElement}>
+        <form className="w-full max-w-[600px] z-5" onSubmit={handleSubmit}>
+            <div className="flex flex-col py-[1rem] w-full">
                 <label htmlFor="name">Name</label>
-                <input type="text" id="name" className={styles.inputBox} autoComplete="off" required minLength={3} maxLength={150} />
+                <input type="text" id="name" className="py-[0.75rem] px-[2rem] border border-1 rounded-sm border-[#0e0008] focus:no-outline bg-[rgba(233,62,104,0.1)]" autoComplete="off" required minLength={3} maxLength={150} />
             </div>
 
-            <div className={styles.formElement}>
+            <div className="flex flex-col py-[1rem] w-full">
                 <label htmlFor="e-mail">E-mail</label>
-                <input type="email" id="email" className={styles.inputBox} autoComplete="off" required minLength={3} maxLength={150}/>
+                <input type="email" id="email" className="py-[0.75rem] px-[2rem] border border-1 rounded-sm border-[#0e0008] focus:no-outline bg-[rgba(233,62,104,0.1)]" autoComplete="off" required minLength={3} maxLength={150}/>
             </div>
 
-            <div className={styles.formElement}>
+            <div className="flex flex-col py-[1rem] w-full">
                 <label htmlFor="subject">Subject</label>
-                <input type="text" id="subject" className={styles.inputBox} autoComplete="off" minLength={3} maxLength={200}/>
+                <input type="text" id="subject" className="py-[0.75rem] px-[2rem] border border-1 rounded-sm border-[#0e0008] focus:no-outline bg-[rgba(233,62,104,0.1)]" autoComplete="off" minLength={3} maxLength={200}/>
             </div>
 
-            <div className={styles.formElement}>
+            <div className="flex flex-col py-[1rem] w-full">
                 <label htmlFor="message">Message</label>
-                <textarea name="message" id="message" className={styles.inputBox} rows={5} placeholder="Type your inquiry in here" required minLength={3} maxLength={1000}/>
+                <textarea name="message" id="message" className="py-[0.75rem] px-[2rem] border border-1 rounded-sm border-[#0e0008] focus:no-outline bg-[rgba(233,62,104,0.1)]" rows={5} placeholder="Type your inquiry in here" required minLength={3} maxLength={1000}/>
                 
             </div>
-            <button type="submit" className={styles.sendButton}>Send Message</button>
+            <button type="submit" className="relative transition-all ease-in-out duration-200 rounded-sm w-[200px] outline outline-[1px] outline-[#0e0008] text-[#0e0008] py-[0.75rem] px-[2rem] text-[1.2rem] bg-[#000000] bg-opacity-0 cursor-pointer hover:bg-opacity-20 focus:bg-opacity-20 hover:scale-105 focus:scale-105">Send Message</button>
         </form>
 
     )

@@ -49,7 +49,7 @@ const Accordion = () => {
 
 
     return (
-        <section className="text-[#0e0008] grid grid-cols-1 justify-items-start items-center w-full pr-[20px]">
+        <section className="text-[#0e0008] h-[400px] md:h-[600px] grid grid-cols-1 justify-items-start items-center w-full pr-[20px]">
             <h1 className="pb-[3rem]">Shop for Art</h1>
             {entries.map((entry, index) => {
                 return (

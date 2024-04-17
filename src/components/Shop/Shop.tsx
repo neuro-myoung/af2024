@@ -5,7 +5,7 @@ import Accordion from '../Accordion/Accordion'
 const Shop = () => {
     return (
         <section className="w-full bg-[#f2f2f2] min-h-screen flex justify-center">
-            <div className="w-full max-w-[1600px] grid grid-cols-2 grid-rows-1 gap-5">
+            <div className="w-full max-w-[1400px] grid grid-cols-1 grid-rows-2 md:grid-cols-2 md:grid-rows-1 gap-0 md:gap-5">
                 <div className="h-full flex flex-col justify-center gap-10 p-[1rem] relative items-center">
                     <Accordion />
                     <button className="relative w-[200px] transition-all ease-in-out duration-200 text-[#0e0008] text-[1.2rem] py-[0.75rem] px-[2rem] bg-[#000] bg-opacity-0 pointer rounded-sm outline outline-1 outline-[#0e0008] hover:bg-opacity-20 focus:bg-opacity-20 hover:scale-105 focus:scale-105">
@@ -13,7 +13,7 @@ const Shop = () => {
                     </button>
                 </div>
                 <div className="h-full flex justify-center items-center">
-                    <div className="grid grid-rows-2 grid-cols-1 w-[50vw] max-w-[800px] h-[50vw] max-h-[800px]">
+                    <div className="grid grid-rows-2 grid-cols-1 w-[90vw] h-[90vw] md:w-[50vw] max-w-[800px] md:h-[50vw] max-h-[700px]">
                         <div className="flex justify-end items-end relative">
                             <Image
                                 src="/mockups/fireplace_mockup_small.png"

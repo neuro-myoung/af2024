@@ -14,7 +14,7 @@ const TextReveal = ({value}) => {
 
     return(
         <h1 
-            className="max-w-[1200px] flex flex-wrap relative leading-8 text-[#0e0008]"
+            className=" justify-center px-[0.75rem] md:justify-start md:px-0 text-[2rem] md:text-[3rem] max-w-[1200px] flex flex-wrap relative leading-8 text-[#0e0008]"
             ref = {element}
         >
             {
@@ -33,7 +33,7 @@ const Word = ({children, range, progress}) => {
     const extent = range[1] - range[0];
     const step = extent/children.length;
     return (
-        <span className="m-4 relative">
+        <span className="m-2 md:m-3 relative">
             {
                 chars.map( (character, i) => {
                     const start = range[0] + (step * i)
