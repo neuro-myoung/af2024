@@ -14,7 +14,7 @@ const TextReveal = ({value}) => {
 
     return(
         <h1 
-            className=" justify-center px-[0.75rem] md:justify-start md:px-0 text-[2rem] md:text-[3rem] max-w-[1200px] flex flex-wrap relative leading-8 text-[#0e0008]"
+            className="font-normal justify-center px-[0.75rem] md:justify-start md:px-0 text-[2rem] md:text-[3rem] max-w-[1200px] flex flex-wrap relative leading-8 text-[#0e0008]"
             ref = {element}
         >
             {
